@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--
+  *******************************
+  *** Simple type definitions ***
+  *******************************
+  -->
+  <xs:simpleType name="simple_booleanT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="true" />
+      <xs:enumeration value="false" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="simple_dataT">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="[a-zA-Z0-9_\.\-]+" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="simple_fileT">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="2" />
+      <xs:pattern value="[a-zA-Z0-9_\.\-/]+" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="simple_nullstringT">
+    <xs:restriction base="xs:string">
+      <xs:length value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="simple_numberT">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:simpleType name="simple_stringT">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="simple_textT">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--
+  ********************************
+  *** Complex type definitions ***
+  ********************************
+  -->
+  <!-- *** parent element *** -->
+  <xs:complexType name="content_parentT">
+    <xs:sequence>
+      <xs:element name="context" type="content_rootcontextT" />
+    </xs:sequence>
+    <xs:attribute name="page_id" type="simple_dataT" use="required" />
+    <xs:attribute name="sort_number" type="simple_numberT" use="optional" />
+  </xs:complexType>
+
+  <!-- *** context element (root) *** -->
+  <xs:complexType name="content_rootcontextT">
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="unbounded" >
+        <xs:element name="context" type="content_childcontextT" />
+        <xs:element name="separator" type="simple_nullstringT" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="breadcrumb" type="simple_textT" use="required" />
+    <xs:attribute name="menutext" type="simple_textT" use="required" />
+    <xs:attribute name="path" type="simple_fileT" use="required" />
+    <xs:attribute name="package" type="simple_dataT" use="required" />
+    <xs:attribute name="page_id" type="simple_dataT" use="required" />
+    <xs:attribute name="hidden" type="simple_booleanT" use="required" />
+    <xs:attribute name="title" type="simple_stringT" use="optional" />
+  </xs:complexType>
+
+  <!-- *** context element (child) *** -->
+  <xs:complexType name="content_childcontextT">
+    <xs:simpleContent>
+      <xs:extension base="simple_stringT">
+        <xs:attribute name="breadcrumb" type="simple_textT" use="required" />
+        <xs:attribute name="menutext" type="simple_textT" use="required" />
+        <xs:attribute name="path" type="simple_fileT" use="required" />
+        <xs:attribute name="package" type="simple_dataT" use="required" />
+        <xs:attribute name="page_id" type="simple_dataT" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!--
+  ****************
+  *** Elements ***
+  ****************
+  -->
+  <xs:element name="parent" type="content_parentT">
+    <xs:unique name="path_context_unique">
+      <xs:selector xpath=".//context" />
+      <xs:field xpath="@path" />
+    </xs:unique>
+    <xs:unique name="page_id_context_unique">
+      <xs:selector xpath=".//context" />
+      <xs:field xpath="@page_id" />
+    </xs:unique>
+  </xs:element>
+
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parent page_id="portal_start">
+  <context breadcrumb="iELM ELtest" hidden="false" package="ielm_eltest_responsive" path="/ielm_eltest_responsive/" menutext="Demo-iELM (ELtest)" page_id="eltest_responsive_index">
+    <context breadcrumb="Grundlagen" menutext="Grundlagen" path="basics.jsp" package="ielm_eltest_responsive" page_id="eltest_responsive_basics">
+    </context>
+    <context breadcrumb="Simulation" menutext="Simulation" path="simulation.jsp" package="ielm_eltest_responsive" page_id="eltest_responsive_simulation">
+    </context>
+    <context breadcrumb="Aufgaben" menutext="Aufgaben" path="exercise.jsp" package="ielm_eltest_responsive" page_id="eltest_responsive_exercise">
+    </context>
+    <context breadcrumb="Hilfe" menutext="Hilfe" path="online-help.jsp" package="ielm_eltest_responsive" page_id="eltest_responsive_online-help">
+    </context>
+    <context breadcrumb="Info" menutext="Info" path="info.jsp" package="ielm_eltest_responsive" page_id="eltest_responsive_info">
+    </context>
+  </context>
+</parent>

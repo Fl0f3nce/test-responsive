@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.hs-coburg.de/e-learning/eltest"
+           elementFormDefault="qualified"
+           xmlns:p="http://www.hs-coburg.de/e-learning/eltest">
+  <xs:import namespace="http://www.hs-coburg.de/e-learning/ielm-scenarios"
+             schemaLocation="ielm-scenario.xsd"/>
+
+  <xs:complexType name="eltest_contentT">
+    <!-- very simple type only for demonstration purposes -->
+    <xs:sequence>
+      <xs:element name="specific_desc" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="eltest_content" type="p:eltest_contentT"></xs:element>
+</xs:schema>

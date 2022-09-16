@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario       xmlns="http://www.hs-coburg.de/e-learning/ielm-scenarios" 
+            xmlns:p = "http://www.hs-coburg.de/e-learning/eltest"
+            xsi:schemaLocation="http://www.hs-coburg.de/e-learning/ielm-scenarios ../xsd/ielm-scenario.xsd
+                              http://www.hs-coburg.de/e-learning/eltest ../xsd/eltest-content.xsd"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Szenario 2</name>	
+  <description>Ein zweites Szenarion zum iELM ELtest</description>
+  <level>0</level>
+  <author>D. Wi&amp;szlig;mann</author>
+  <date>2016-03-04</date>
+  <category>Anschauung - 2</category>
+  <contact>dieter.wissmann@hs-coburg.de</contact>
+  <content>
+    <p:eltest_content>     
+      <!-- wss 20160304: ielm specific content -->
+      <p:specific_desc>Das ist der spezifische Inhalt des Szenario 2 zum iELM ELtest. Auch dies ist nur ein einfacher Text.</p:specific_desc>
+      
+    </p:eltest_content>
+  </content>
+</scenario>

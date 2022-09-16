@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.hs-coburg.de/e-learning/ielm-scenarios"
+           elementFormDefault="qualified">
+
+  <xs:element name="scenario">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="name" type="xs:string" />
+        <xs:element name="description" type="xs:string" />
+        <xs:element name="level" type="xs:string" />
+        <xs:element name="author" type="xs:string" />
+        <xs:element name="date" type="xs:date" />
+        <xs:element name="category" type="xs:string" />
+        <xs:element name="contact" type="xs:string" />
+        <xs:element name="content">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any processContents="strict" namespace="##other" minOccurs="1" maxOccurs="1"/>
+              <!--<xs:any processContents="lax" minOccurs="1" maxOccurs="1"/>-->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

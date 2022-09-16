@@ -1,0 +1,347 @@
+/* !!DO_NOT_EDIT!! */
+/*Menu-Buttons*/
+
+#_ielm_open_navi, #_ielm_open_menu {
+	background-color: #BEBEBE;
+	border: none;
+	color: #FFF;
+	padding-top: 10px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	height: 40px;
+}
+
+#_ielm_open_navi:hover, #_ielm_open_navi:focus, #_ielm_open_navi:active, #_ielm_open_menu:hover, #_ielm_open_menu:focus, #_ielm_open_menu:active  {
+	background-color: #2288FF;
+	color: #FFF;	
+}
+
+#_ielm_open_navi {
+	position: absolute;
+	left: 10px;
+	z-index: 500;
+	top: 10px;
+}
+
+#_ielm_open_menu {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 500;
+}
+
+/*-----------------------------*/
+
+/*Bereichs-Navigation*/
+
+._ielm_navi
+{
+	text-align: left;
+	font-size: 20px;
+	color: #2288FF;
+	float: left;
+	width: 15%;
+	height: auto;
+	z-index: 999;
+	background-color: #4D4D4D;
+	padding-right: 0%;
+	padding-left: 0%;
+	font-weight: 400;
+	position: static;
+	border-right-width: 5px;
+	border-right-style: solid;
+	border-right-color: #2288FF;
+	position: fixed;
+	top: 60px;
+	left: 0;
+}
+
+._ielm_navi ul
+{
+	padding: 0px;
+	list-style-type: none;
+	margin: 0px;
+}
+
+._ielm_navi ul li
+{
+}
+
+._ielm_navi ul li._separator
+{
+        background-color: #2288FF;
+  	width: 100%;
+	height: 1px;
+	float: left;
+	padding-top: 0;
+	padding-right: 4%;
+	padding-bottom: 0;
+	padding-left: 5%;
+}
+
+._ielm_navi ul li._active a
+{
+        text-decoration: underline;
+}
+
+._ielm_navi ul li a
+{
+	width: 100%;
+	height: auto;
+	float: left;
+	font-size: 16px;
+	color: #FFF;
+	text-decoration: none;
+	padding-top: 0;
+	padding-right: 4%;
+	padding-bottom: 0;
+	padding-left: 5%;
+	font-weight: 700;
+	line-height: 50px;
+}
+
+._ielm_navi ul li a:hover, ._ielm_navi ul li a:focus
+{
+	background-color:#2288FF;
+		
+}
+
+._ielm_navi span
+{
+	padding: 5px;
+	float: right;
+	color: #FFF;
+	line-height: 40px;
+	font-size: 20px;
+}
+
+#breadcrumb-list {
+	margin: 10px;
+	background-color: #4D4D4D;
+	color: #FFF;
+}
+
+#breadcrumb-list select {
+	font-size: 16px;
+	font-weight: 700;
+	background-color: #4D4D4D;
+	border: 1px solid #FFF;
+	color: #FFF;
+}
+
+#breadcrumb-list select option {
+	font-size: 16px;
+	font-weight: 700;
+	border: none;
+	color: #FFF;
+	padding: 5px;
+	float: left;
+}
+
+#breadcrumb-list {
+	margin: 10px;
+}
+
+/*-----------------------------*/
+
+/*Menüführung*/
+
+._ielm_menu{	
+	text-align: left;
+	font-size: 20px;
+	color: #2288FF;
+	width: 15%;
+	height: auto;
+	z-index: 999;
+	background-color: #4D4D4D;
+	padding-right: 0%;
+	padding-left: 0%;
+	font-weight: 400;
+	position: fixed;
+	border-left-width: 5px;
+	border-left-style: solid;
+	border-left-color: #2288FF;
+	top: 60px;
+	right: 0;
+}
+
+._ielm_menu ul{	
+	font-size: 0;
+	z-index: 999;
+	position: relative;
+	zoom: 1;
+	*display:inline;
+	background-color: #4D4D4D;
+	padding: 0px;
+	list-style-type: none;
+	margin: 0px;
+	width: 100%;
+}
+
+._ielm_menu ul ul ul{
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #0051B3;
+}
+
+._ielm_menu ul li { 
+	position:relative;
+	display:block;
+	white-space:nowrap;
+	font-size:0;
+	float:left;
+	width: 100%;
+}
+
+._ielm_menu ul li a {
+	display: block;
+	vertical-align: middle;
+	text-align: left;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: #4D4D4D;
+	font-size: 16px;
+	font-weight: 700;
+	padding-top: 0;
+	padding-right: 20px;
+	padding-bottom: 0;
+	padding-left: 20px;
+	line-height: 50px;
+	font-weight: 700;
+	width: 100%;
+	height: auto;
+	float: left;
+	color: #FFF;
+        background-image: url(images/menu-icon-close.png);
+        background-repeat: no-repeat;
+        background-position: 90% center;
+}
+
+._ielm_menu ul li a:hover {
+    background-color: #2288FF;
+    text-decoration:none;
+}
+
+._ielm_menu ul li a.active {
+	background-color: #0051B3;
+	text-decoration: none;
+        background-image: url(images/menu-icon-open.png);
+        background-repeat: no-repeat;
+        background-position: 90% center;
+}
+  
+._ielm_menu ul li ul {
+	list-style: none;
+	background-color: #3B3B3B;
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+ 
+._ielm_menu ul li ul li {
+	margin:0; 
+    border:0; 
+}
+
+._ielm_menu ul li ul li a { 
+    display: block; 
+    text-align: left;
+    background-color: #3B3B3B;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    padding-top: 0;
+    padding-right: 20px;
+    padding-bottom: 0;
+    padding-left: 40px;
+    background-image: none;
+}
+
+._ielm_menu ul ul ul li a {
+	display: block;
+	text-align: left;
+	background-color: #3B3B3B;
+	font-size: 16px;
+	color: #ffffff;
+	text-decoration: none;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 45px;
+	line-height: 30px;
+}
+
+._ielm_menu ul ul ul li a span {
+	padding-right: 10px;
+}
+
+._ielm_menu ul li ul li a:hover {
+	text-decoration: none;
+	background-color: #2288FF; 
+}
+
+._ielm_menu ul ul ul li a:hover {
+	text-decoration: none;
+	background-color: #2288FF; 
+}
+
+._ielm_menu ul ul li.checkbox{
+	float: left;
+	font-size: 16px;
+	color: #FFF;
+	font-weight: 700;
+	padding-top: 15px;
+	padding-right: 20px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+}
+._ielm_menu ul ul li.checkbox label{
+	font-size: 16px;
+	font-weight: 700;
+}
+
+/*-----------------------------*/
+
+@media all and (max-width: 1440px) {
+._ielm_navi
+{
+	width: 20%;
+}
+}
+
+@media all and (max-width: 800px) {
+._ielm_navi
+{
+	width: 33%;
+}
+}
+
+@media all and (max-width: 640px) {
+._ielm_navi
+{
+	width: 40%;
+}
+}
+
+@media all and (max-width: 1440px) {
+._ielm_menu
+{
+	width: 20%;
+}
+}
+
+@media all and (max-width: 950px) {
+._ielm_menu
+{
+	width: 33%;
+}
+}
+
+@media all and (max-width: 640px) {
+._ielm_menu
+{
+	width: 40%;
+}
+}
+

@@ -1,0 +1,8 @@
+/* Module section specific menu layout */
+#exercise-menu-1_parameter_three_selection
+{
+  /* Zhu xin Su SS 2020
+   CSS fix for velocity input: makes the input text visible again, because else
+   bootstrap.css for the <select> element with font-size: inherit will be used */
+  font-size: initial;
+}

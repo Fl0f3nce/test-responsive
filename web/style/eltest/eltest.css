@@ -1,0 +1,122 @@
+/* !!DO_NOT_GENERATE!! */
+@charset "utf-8";
+/*
+ * ELtest specific style rules
+ */
+
+html, body
+{
+  background-color:       aliceblue;        /* aquivalent to old rgba(50,150,255,0.04)from ielm-common */
+}
+
+/* -------------------------------------------------------------------------- */
+/* -- basics.jsp ------------------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*   eltest-workflow-view.jsp  */
+/* -------------------------------------------------------------------------- */
+#eltest_init_information
+{
+  position:               relative;         /* important because infoboxes move main content */
+  margin-top:             100px;            /* important to get menus working. Overlapping problem !*/
+  font-size:              24pt;
+}
+/* -------------------------------------------------------------------------- */
+/* - section misc ----------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+.input-group-btn > button
+{
+  font-size:              14px;             /* for changestepsdialog, because jQuery UI do 1.1em */
+}
+/* - end section misc ------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/* - section step navigation ------------------------------------------------ */
+/* -------------------------------------------------------------------------- */
+button.ielm_step_nav
+{
+  color:                  black;
+}
+/* - end section step navigation -------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/* - styles for combined tables with scrolling part (wss 20160309) ---------- */
+/* -------------------------------------------------------------------------- */
+#eltest_table_wrapper
+{
+  position:               relative;
+  border-color:           gray;
+  border-style:           solid;
+  border-width:           5px;
+}
+
+#eltest_protocolFront1
+{
+  float:                  left;
+  color:                  red;
+  border-color:           red;
+  border-style:           solid;
+  border-width:           1px;
+  z-index:                3;
+}
+
+#eltest_protocolValues1
+{
+  float:                  none;
+  overflow:               auto;
+  overflow-y:             hidden;
+
+  color:                  blue;
+  border-color:           blue;
+  border-style:           solid;
+  border-width:           1px;
+}
+
+.eltest_col_width_header
+{
+  width:                  100px;
+}
+
+.eltest_col_width_val
+{
+  width:                  30px;
+  white-space:            nowrap;
+}
+
+table.eltest_protocol_table
+{
+  table-layout:           fixed;
+  margin-bottom:          0px;
+  align:                  center;
+  border-spacing:         0px;
+  text-align:             center;
+}
+
+table.eltest_protocol_table th
+{
+  background-color:       #E6E6E6;
+  padding:                10px;
+  text-align:             center;
+  border-top-width:       1px;
+  border-right-width:     1px;
+  border-bottom-width:    1px;
+  border-left-width:      1px;
+  border-top-style:       solid;
+  border-right-style:     solid;
+  border-bottom-style:    solid;
+  border-left-style:      solid;
+  border-top-color:       #E6E6E6;
+  border-right-color:     #B9B9B9;
+  border-bottom-color:    #2288FF;
+  border-left-color:      #E6E6E6;
+  text-align:             center;
+}
+
+table.eltest_protocol_table td
+{
+  background-color:       #FCFCFC;
+  border:                 1px solid #B9B9B9;
+  text-align:             center;
+  padding:                5px;
+}

@@ -1,0 +1,116 @@
+/* !!DO_NOT_GENERATE!! */
+/* Tabellendarstellung */
+
+div#protocolFront{
+  position: absolute;
+  z-index: 3;
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: #2288FF;
+}
+div#protocolValues{
+  padding-left: 58px;
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+table#protocol{
+  table-layout: fixed;
+  margin-bottom:0px;
+  align:center;
+  border-spacing: 0px;
+  text-align: center;
+}
+table#protocol th{
+  background-color: #E6E6E6;
+  padding: 3px;
+  text-align: center;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: #E6E6E6;
+  border-right-color: #B9B9B9;
+  border-bottom-color: #2288FF;
+  border-left-color: #E6E6E6;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+}
+table#protocol td{
+  background-color: #FCFCFC;
+  border: 1px solid #B9B9B9;
+  text-align: center;
+  padding: 3px;
+  font-size: 12px;
+}
+
+tr#selectedEx td{
+  background: #5BC0DE;
+  font-size: 12px;
+}
+
+tr#choosenEx td{
+  background: #D9534F;
+  font-size: 12px;
+}
+
+tr#rightEx td{
+  background: #5CB85C;
+  font-size: 12px;
+}
+
+/* Warnungen */
+
+.eltest_warnings {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.eltest_warnings h1 {
+  color: #D9534F;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* Aufgaben-Elemente */
+
+.eltest_exercise_result_info {
+  float: left;
+  clear:both;
+}
+
+.eltest_exercise_result_info tr th, .eltest_exercise_result_info tr td {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.eltest_exercise_info {
+  float: left;
+}
+
+.eltest_exercise_info h2 {
+  font-size: 18px;
+}
+
+.eltest_exercise_action {
+  width: 100%;
+  height: auto;
+}
+
+.eltest_exercise_action h2 {
+  font-size: 18px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.eltest_exercise_action input {
+  height: 30px;
+  padding: 5px;
+}

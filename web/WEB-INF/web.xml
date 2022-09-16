@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+  <!-- ********************************************************* -->
+  <!-- *** The ConnectorListener is used to initialize the   *** -->
+  <!-- *** iELM-Navigation Connector and create a periodic   *** -->
+  <!-- *** connector task when the web application is loaded *** -->
+  <!-- ********************************************************* -->
+  <listener>
+    <listener-class>ielm.connector.tasks.v1.ConnectorListener</listener-class>
+  </listener>
+
+  <!-- ****************************************************************** -->
+  <!-- *** iELM-Navigation Connector: HTTPS Rest Client configuration *** -->
+  <!-- ****************************************************************** -->
+  <!--
+  *** Enable HTTPS Rest Client (true/false, default: true) ***
+  The setting "false" creates a HTTP Rest Client and requires port 8080 instead
+  of 8443. So all port settings in the URIs below need to be changed...
+  ************************************************************ -->
+  <context-param>
+    <param-name>app_rest_client_enable_https</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <!-- *** The following file is being loaded using application.getRealPath() *** -->
+  <!-- *** SSL truststore filename (default: /WEB-INF/security/.truststore) *** -->
+  <context-param>
+    <param-name>app_rest_client_ssl_truststore_filename</param-name>
+    <param-value>/WEB-INF/security/.truststore</param-value>
+  </context-param>
+  <!-- *** SSL truststore password (default: changeit) *** -->
+  <context-param>
+    <param-name>app_rest_client_ssl_truststore_password</param-name>
+    <param-value>changeit</param-value>
+  </context-param>
+  <!--
+  *** Network connect timeout interval in milliseconds (minimum: 1000) ***
+  The default value depends on the server speed:
+                  - Aggressive: <= 2000
+                  - Moderate: 4000
+                  - Normal: 6000
+                  - Slow: 8000
+                  - Very slow: >= 10000
+  ************************************************************************ -->
+  <context-param>
+    <param-name>app_rest_client_network_connect_timeout</param-name>
+    <param-value>2000</param-value>
+  </context-param>
+  <!--
+  *** Network read timeout interval in milliseconds (minimum: 1000) ***
+  The default value depends on the server speed:
+                  - Aggressive: <= 2000
+                  - Moderate: 4000
+                  - Normal: 6000
+                  - Slow: 8000
+                  - Very slow: >= 10000
+  ********************************************************************* -->
+  <context-param>
+    <param-name>app_rest_client_network_read_timeout</param-name>
+    <param-value>2000</param-value>
+  </context-param>
+  <!-- *** Authentication username for iELM-Navigation API (default: iELMNavigationUsername) *** -->
+  <!-- *** (needs to match iELM-Navigation API configuration) *** -->
+  <context-param>
+    <param-name>app_rest_client_module_authentication_username</param-name>
+    <param-value>iELMNavigationUsername</param-value>
+  </context-param>
+  <!-- *** Authentication password for iELM-Navigation API (default: iELMNavigationPassword) *** -->
+  <!-- *** (needs to match iELM-Navigation API configuration) *** -->
+  <context-param>
+    <param-name>app_rest_client_module_authentication_password</param-name>
+    <param-value>iELMNavigationPassword</param-value>
+  </context-param>
+
+  <!-- ******************************************************** -->
+  <!-- *** iELM-Navigation Connector: Modules configuration *** -->
+  <!-- ******************************************************** -->
+  <!-- *** Modules POST URI of the iELM-Navigation API which is used to register a module *** -->
+  <!-- *** (default: https://localhost:8443/ielm_navigation_api/api/v1/modules) *** -->
+  <context-param>
+    <param-name>app_connector_modules_post_uri</param-name>
+    <param-value>https://localhost:8443/ielm_navigation_api/api/v1/modules</param-value>
+  </context-param>
+  <!-- *** Delete existing modules on POST Conflict (409) *** -->
+  <!-- *** (true/false, default: true) *** -->
+  <context-param>
+    <param-name>app_connector_delete_existing_modules_on_post_conflict</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <!-- *** Log modules response errors for Rest-based operations *** -->
+  <!-- *** (true/false, default: true) *** -->
+  <context-param>
+    <param-name>app_connector_log_modules_response_errors</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <!-- *************************************************************** -->
+  <!-- *** iELM-Navigation Connector: Portal modules configuration *** -->
+  <!-- *************************************************************** -->
+  <!-- *** Portal modules POST URI of the iELM-Navigation API which is used to register a portal module *** -->
+  <!-- *** (default: https://localhost:8443/ielm_navigation_api/api/v1/portalmodules) *** -->
+  <context-param>
+    <param-name>app_connector_portal_modules_post_uri</param-name>
+    <param-value>https://localhost:8443/ielm_navigation_api/api/v1/portalmodules</param-value>
+  </context-param>
+  <!-- *** Register portal modules at iELM-Navigation API *** -->
+  <!-- *** (true/false, default: false) *** -->
+  <context-param>
+    <param-name>app_connector_register_portal_modules</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <!-- *** Delete existing portal modules with MODULE source on POST Conflict (409) *** -->
+  <!-- *** (true/false, default: true) *** -->
+  <context-param>
+    <param-name>app_connector_delete_existing_portal_modules_with_module_source_on_post_conflict</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <!-- *** Delete existing portal modules with PORTAL source on POST Conflict (409) *** -->
+  <!-- *** (true/false, default: false) *** -->
+  <context-param>
+    <param-name>app_connector_delete_existing_portal_modules_with_portal_source_on_post_conflict</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  <!-- *** Log portal modules response errors for Rest-based operations *** -->
+  <!-- *** (true/false, default: true) *** -->
+  <context-param>
+    <param-name>app_connector_log_portal_modules_response_errors</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <!-- ******************************************************************* -->
+  <!-- *** iELM-Navigation Connector: Connector and task configuration *** -->
+  <!-- ******************************************************************* -->
+  <!-- *** The following file is being loaded using application.getRealPath() *** -->
+  <!-- *** XSD data filename: Used for validation of the XML data *** -->
+  <!-- *** (default: /WEB-INF/xsd/ielm_content.xsd) *** -->
+  <context-param>
+    <param-name>app_connector_xsd_data_filename</param-name>
+    <param-value>/WEB-INF/xsd/ielm_content.xsd</param-value>
+  </context-param>
+  <!-- *** The following file is being loaded using application.getRealPath() *** -->
+  <!-- *** XML data filename: Stores the XML data of the iELM *** -->
+  <!-- *** Warning: This filename must not be located inside the WEB-INF folder! *** -->
+  <!-- *** (default: /ielm_content.xml) *** -->
+  <context-param>
+    <param-name>app_connector_xml_data_filename</param-name>
+    <param-value>/ielm_content.xml</param-value>
+  </context-param>
+  <!-- *** Connector initial task delay in seconds (default: 15) *** -->
+  <context-param>
+    <param-name>app_connector_initial_task_delay</param-name>
+    <param-value>15</param-value>
+  </context-param>
+  <!-- *** Connector initial task delay random extra time in seconds (default: 10) *** -->
+  <context-param>
+    <param-name>app_connector_initial_task_delay_random_extra_time</param-name>
+    <param-value>10</param-value>
+  </context-param>
+  <!-- *** Connector task delay in seconds (default: 60, minimum: 30) *** -->
+  <context-param>
+    <param-name>app_connector_task_delay</param-name>
+    <param-value>60</param-value>
+  </context-param>
+  <!--
+  *** Connector maximum task delay cycle counter value (default: 10, minimum: 1) ***
+  This value must be set according to "app_connector_task_delay" (above) and the
+  following context parameters:
+  -> x = app_navigation_module_alive_check_timeout (iELM-Navigation API)
+         (app_connector_max_task_delay_cycle_counter * app_connector_task_delay) < x
+  -> y = app_navigation_portal_module_alive_check_timeout (iELM-Navigation API)
+         (app_connector_max_task_delay_cycle_counter * app_connector_task_delay) < y
+  ********************************************************************************** -->
+  <context-param>
+    <param-name>app_connector_max_task_delay_cycle_counter_value</param-name>
+    <param-value>10</param-value>
+  </context-param>
+  <!--
+  *** Connector task termination timeout in seconds (minimum: 3) ***
+  The default value depends on the server speed:
+                  - Aggressive: <= 5
+                  - Moderate: 9
+                  - Normal: 13
+                  - Slow: 17
+                  - Very slow: >= 21
+  This value (in seconds) should be set larger than the combined value of:
+  app_rest_client_network_connect_timeout + app_rest_client_network_read_timeout
+  ****************************************************************** -->
+  <context-param>
+    <param-name>app_connector_task_termination_timeout</param-name>
+    <param-value>5</param-value>
+  </context-param>
+  <!-- *** Deactivate connector task (true/false, default: false) *** -->
+  <!-- *** This setting can be used to deactivate the Rest-based connector task *** -->
+  <context-param>
+    <param-name>app_connector_deactivate_connector_task</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <!-- ******************************************************************* -->
+  <!-- *** iELM-Navigation Connector: Miscellaneous iELM configuration *** -->
+  <!-- ******************************************************************* -->
+  <!-- *** iELP context path (default: /ielm_portal) *** -->
+  <context-param>
+    <param-name>app_connector_portal_context_path</param-name>
+    <param-value>/ielm_portal</param-value>
+  </context-param>
+  <!-- *** iELM-Navigation API context path (default: /ielm_navigation_api) *** -->
+  <context-param>
+    <param-name>app_connector_module_navigation_context_path</param-name>
+    <param-value>/ielm_navigation_api</param-value>
+  </context-param>
+  <!-- *** iELP-Navigation API context path (default: /ielp_navigation_api) *** -->
+  <context-param>
+    <param-name>app_connector_portal_navigation_context_path</param-name>
+    <param-value>/ielp_navigation_api</param-value>
+  </context-param>
+  <!-- *** Show side menu separators (true/false, default: true) *** -->
+  <context-param>
+    <param-name>app_connector_show_side_menu_separators</param-name>
+    <param-value>true</param-value>
+  </context-param>
+
+  <!-- ************************************************** -->
+  <!-- *** HTTPS: Setting secure environment for iELM *** -->
+  <!-- ************************************************** -->
+  <!-- *** HTTPS is deactivated by default for eltest - uncomment this for Rest-API HTTPS communication *** -->
+  <!--
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>iELM ELtest Responsive</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  -->
+
+  <!-- ************************************* -->
+  <!-- *** Set index.jsp as welcome file *** -->
+  <!-- ************************************* -->
+  <welcome-file-list>
+    <welcome-file>/index.jsp</welcome-file>
+  </welcome-file-list>
+
+
+  <!-- Begin servlet config -->
+  <!-- not needed in eltest: start
+  <servlet>
+    <servlet-name>ControllerJSP</servlet-name>
+    <jsp-file>/controller-jsp.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ControllerJSP</servlet-name>
+    <url-pattern>/simulation</url-pattern>
+    <url-pattern>/aufgaben</url-pattern>
+    <url-pattern>/hilfe</url-pattern>
+    <url-pattern>/grundlagen</url-pattern>
+    <url-pattern>/info</url-pattern>
+    <url-pattern>/eltest</url-pattern>
+  </servlet-mapping>
+  not needed in eltest: end -->
+  <!-- End servlet config -->
+
+  <!-- Begin ielm-common folder (located inside the web application): generated by ielm_frame_gen -->
+  <context-param>
+    <param-name>path_of_common_files</param-name>
+    <param-value>/ielm-common/</param-value>
+  </context-param>
+  <!-- End ielm-common folder (located inside the web application): generated by ielm_frame_gen -->
+
+  <!-- Begin simulation_options -->
+  <context-param>
+    <param-name>simulation_speed</param-name>
+    <param-value>2000</param-value>
+  </context-param>
+  <context-param>
+    <param-name>max_simulation_speed</param-name>
+    <param-value>10000</param-value>
+  </context-param>
+  <context-param>
+    <param-name>min_simulation_speed</param-name>
+    <param-value>1000</param-value>
+  </context-param>
+  <!-- End simulation_options -->
+
+  <!-- Begin scenario_selection_options: generated by ielm_frame_gen -->
+  <context-param>
+    <param-name>scenario_one</param-name>
+    <param-value>scenario-1.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>scenario_two</param-name>
+    <param-value>scenario-2.xml</param-value>
+  </context-param>
+  <!-- End scenario_selection_options: generated by ielm_frame_gen -->
+
+  <!-- Begin scenario_creation_options -->
+  <context-param>
+    <param-name>scenario_xml_export</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <!-- End scenario_creation_options -->
+
+  <!-- Begin Component FiletreeConnector: generated by ielm_frame_gen -->
+  <servlet>
+    <servlet-name>FiletreeConnector</servlet-name>
+    <servlet-class>ielm.common.explorer.Connector</servlet-class>
+    <init-param>
+      <param-name>ielm_scenario_root_path</param-name>
+      <param-value>/WEB-INF/scenarios/</param-value> <!-- Default value in ielm.jar-->
+    </init-param>
+    <init-param>
+      <param-name>ielm_scenario_xsd_file</param-name>
+      <param-value>/WEB-INF/xsd/eltest-content.xsd</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ielm_scenario_content_class</param-name>
+      <param-value>ielm.eltest.xml.EltestContentT</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ielm_scenario_allowed_file_endings</param-name>
+      <param-value>xml,txt,public</param-value>
+    </init-param>
+    <init-param>
+      <!-- supported MIME-Types -->
+      <param-name>ielm_scenario_allowed_transport_formats</param-name>
+      <param-value>application/xml,application/json,application/json-scenarioinfo,text/plain</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FiletreeConnector</servlet-name>
+    <url-pattern>/Connector</url-pattern>
+  </servlet-mapping>
+  <!-- ielm-specific parameter as standard value for the ielm to get a scenario content -->
+  <context-param>
+    <param-name>scenario_transport_format</param-name>
+    <param-value>application/xml</param-value>
+    <!-- values should be one of the MIME types: application/json, application/xml or text/plain -->
+  </context-param>
+  <!-- End Component FiletreeConnector: generated by ielm_frame_gen -->
+
+  <!-- Begin Component client-debug: generated by ielm_frame_gen -->
+  <context-param>
+    <param-name>debug_enabled</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_scenario_creation_enabled</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_simulation_action_enabled</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_exercise_action_enabled</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_console_enabled</param-name>
+    <param-value>true</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_area_enabled</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_area_font_size</param-name>
+    <param-value>8pt</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_area_pos_left</param-name>
+    <param-value>2px</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_area_pos_top</param-name>
+    <param-value>160px</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_area_height</param-name>
+    <param-value>600px</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_area_width</param-name>
+    <param-value>250px</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_window_enabled</param-name>
+    <param-value>false</param-value>
+  </context-param>
+  <context-param>
+    <param-name>debug_window_font_size</param-name>
+    <param-value>10pt</param-value>
+  </context-param>
+  <!-- End Component client-debug: generated by ielm_frame_gen -->
+
+  <!-- ********************* Style-Config *********************
+  1. Default value should be 1
+  2. A value (1 or 0) must be set -->
+
+  <!-- meta_box_over_1280:
+  - 1: meta-box are displayed at a display-resolution over 1280px width
+  - 0: meta-box are hidden at a display-resolution over 1280px width -->
+  <context-param>
+    <param-name>meta_box_over_1280</param-name>
+    <param-value>1</param-value>
+  </context-param>
+
+  <!-- meta_box_under_1280:
+  - 1: meta-box are hidden at a display-resolution under 1280px width
+  - 0: meta-box are displayed at a display-resolution under 1280px width -->
+  <context-param>
+    <param-name>meta_box_under_1280</param-name>
+    <param-value>1</param-value>
+  </context-param>
+
+  <!-- param_box_over_1280:
+  - 1: param-box are displayed at a display-resolution over 1280px width
+  - 0: param-box are hidden at a display-resolution over 1280px width -->
+  <context-param>
+    <param-name>param_box_over_1280</param-name>
+    <param-value>1</param-value>
+  </context-param>
+
+  <!-- param_box_under_1280:
+  - 1: param-box are hidden at a display-resolution under 1280px width
+  - 0: param-box are displayed at a display-resolution under 1280px width -->
+  <context-param>
+    <param-name>param_box_under_1280</param-name>
+    <param-value>1</param-value>
+  </context-param>
+
+  <!-- menus_config:
+  - 1: it is possible to open both menus at the same time
+  - 0: if one menu is open the other menu will be hidden -->
+  <context-param>
+    <param-name>menus_config</param-name>
+    <param-value>1</param-value>
+  </context-param>
+
+  <!-- menu_default_list:
+  - 1: menu-list <ul> is closed (default)
+  - 0: menu-list <ul>, all entries are open -->
+  <context-param>
+    <param-name>menu_default_list</param-name>
+    <param-value>0</param-value>
+  </context-param>
+  <!-- ******************************************************** -->
+
+</web-app>

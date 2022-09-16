@@ -1,0 +1,77 @@
+/* !!DO_NOT_GENERATE!! */
+/* Tabellendarstellung */
+
+div#protocolFront{
+  position: absolute;
+  z-index: 3;
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: #2288FF;
+}
+div#protocolValues{
+  padding-left: 40px;
+  overflow: auto;
+  overflow-y: hidden;
+
+}
+
+tr#selectedEx td{
+  background: #5BC0DE;
+}
+
+tr#choosenEx td{
+  background: #D9534F;
+}
+
+tr#rightEx td{
+  background: #5CB85C;
+}
+
+/* Warnungen */
+.eltest_warnings {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.eltest_warnings h1 {
+  color: #D9534F;
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 30px;
+}
+
+/* Aufgaben-Elemente */
+.eltest_exercise_result_info {
+  float: left;
+  clear:both;
+}
+
+.eltest_exercise_result_info tr th, .eltest_exercise_result_info tr td {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.eltest_exercise_info {
+  float: left;
+}
+
+.eltest_exercise_info h2 {
+  font-size: 20px;
+}
+
+.eltest_exercise_action {
+  width: 100%;
+  height: auto;
+}
+
+.eltest_exercise_action h2 {
+  font-size: 20px;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.eltest_exercise_action input {
+  height: 30px;
+  padding: 5px;
+}
